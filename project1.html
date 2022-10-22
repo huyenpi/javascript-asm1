@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            color: white; 
+            background-color: black; 
+            padding: 5px; 
+            border-radius: 5%;
+            cursor: pointer;
+        }
+        p {
+            font-weight: bold;
+        }
+        #next {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <button onclick='notify()'>Try it</button> <!--gọi hàm notify--> 
+    <p id='name'></p>
+    <p id='city'></p>
+    <p id='mobile'></p>
+    <p id='yearofbirth'></p>
+    <p id='age'></p>
+    <p id='gender'></p>
+    <p id='email'></p>
+    <p id='jobs'></p>
+    <p id='hobby'></p>
+
+
+    <div id='next'>
+    <button>Bước tiếp theo</button>
+        
+    </div>
+    <script>
+                                //Định nghĩa hàm notify
+
+            function notify() {
+            alert('Chào mừng bạn đến với ứng dụng Javascript đầu tiên');
+            const name = prompt('Hãy nhập tên của bạn');
+            const city = prompt('Hãy nhập thành phố bạn sống');
+            const mobile = prompt('Hãy nhập số điện thoại của bạn');
+            document.getElementById('name').innerHTML = 'Tên: ' + name; 
+            document.getElementById('city').innerHTML = 'Thành phố: ' + city;
+            document.getElementById('mobile').innerHTML = 'Số điện thoại: ' + mobile;
+            
+            const d = new Date(); // khởi tạo đối tượng Date thời điểm hiện tại
+            const now = d.getFullYear(); // lấy ra năm của đối tượng Date
+            let yearofbirth;
+            /** 
+             * Dùng vòng lặp do/while để yêu cầu người dùng nhập lại năm sinh
+             * cho đến khi năm sinh < năm hiện tại
+             **/
+            do {
+                 yearofbirth = prompt('Hãy nhập năm sinh của bạn');              
+            } while (yearofbirth > now);  //nhập lại nếu năm sinh > năm hiện tại
+            document.getElementById('yearofbirth').innerHTML = 'Năm sinh: ' + yearofbirth;
+            // Xây dựng hàm tính tuổi hiện tại từ năm sinh nhập vào
+            function age() {
+               result = now - yearofbirth;
+               document.getElementById('age').innerHTML = 'Tuổi: ' + result;
+            }
+            age(); // gọi hàm age để được thực thi
+
+           // Bổ sung thêm thông tin cá nhân
+           const gender = prompt('Hãy nhập giới tính của bạn');
+           const email = prompt('Hãy nhập email của bạn');
+           const jobs = prompt('Hãy nhập công việc hiện tại của bạn');
+           const hobby = prompt('Hãy nhập sở thích của bạn');
+           document.getElementById('gender').innerHTML = 'Giới tính: ' + gender;
+           document.getElementById('email').innerHTML = 'Email: ' + email;
+           document.getElementById('jobs').innerHTML = 'Công việc: ' + email;
+           document.getElementById('hobby').innerHTML = 'Sở thích: ' + hobby;
+           // thay đổi thuộc tính style của div để hiển thị button 'Bước tiếp theo'
+           document.getElementById('next').style = 'display:block';
+            
+           }
+    </script>
+</body>
+</html>
